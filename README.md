@@ -1,22 +1,25 @@
-🚀 TeamFlow Backend – Task & Project Management API
+TeamFlow – Backend
 
-Backend system for managing projects & tasks using Node.js, Express, TypeScript, PostgreSQL, and JWT Authentication.
+TeamFlow is a backend API for a project & task management system.
+It is built using:
 
 📦 Tech Stack
-
-BACKEND
+Backend
 
 Node.js
 Express.js
 TypeScript
-PostgreSQL (pg)
-
-ARCHITECTURE
-
+PostgreSQL
+JWT Authentication
 Modular MVC Architecture
-Model → Service → Controller → Route
 
-LAYERED FOLDER STRUCTURE
+Features
 
-Error-handling using AppError
-Async handling using catchAsync
+Global Error Handling Layer
+Centralized AppError Class
+Async Wrapper (catchAsync)
+Modular MVC Architecture
+Reusable Query-Service-Controller Pattern
+Secure JWT Authentication Middleware
+Role-Based Access Control
+PostgreSQL Dynamic Query Builder
