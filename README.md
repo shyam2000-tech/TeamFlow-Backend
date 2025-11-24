@@ -15,14 +15,14 @@ Modular MVC Architecture
 
 🧩Code Implementations
 
-Global Error Handling Layer
-Centralized AppError Class
-Async Wrapper (catchAsync)
-Modular MVC Architecture
-Reusable Query-Service-Controller Pattern
-Secure JWT Authentication Middleware
-Role-Based Access Control
-PostgreSQL Dynamic Query Builder
+1. Global Error Handling Layer
+2. Centralized AppError Class
+3. Async Wrapper (catchAsync)
+4. Modular MVC Architecture
+5. Reusable Query-Service-Controller Pattern
+6. Secure JWT Authentication Middleware
+7. Role-Based Access Control
+8. PostgreSQL Dynamic Query Builder
 
 💫Running the Project
 
