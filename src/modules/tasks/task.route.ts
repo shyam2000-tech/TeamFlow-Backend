@@ -12,7 +12,7 @@ taskRoutes.get("/projects/:projectId/tasks", verifyToken, TaskController.getTask
 
 taskRoutes.get("/details/:taskId", verifyToken, TaskController.getTaskDetails);
 
-taskRoutes.patch("/status/:taskId", TaskController.updateTaskStatus);
+taskRoutes.patch("/task/:taskId",verifyToken, TaskController.updateTask);
 
 taskRoutes.patch("/position/:taskId", TaskController.updateTaskPosition);
 

@@ -35,8 +35,18 @@ export const TaskService = {
     return TaskDB.getTasksByProjectForUser(projectId, userId, filters);
   },
 
-  async updateTaskStatus(taskId: number, status: string): Promise<boolean> {
-    return TaskDB.updateTaskStatus(taskId, status);
+  async updateTask(
+    taskId: number,
+    userId: number,
+    role: string,
+    data: any
+  ): Promise<boolean> {
+    if (role !== "ADMIN") {
+      const isOwner = await TaskDB.checkUserMembership(taskId, userId);
+      if (!isOwner) return false;
+    }
+
+    return TaskDB.updateTask(taskId, data);
   },
 
   async updateTaskPosition(taskId: number, position: number): Promise<boolean> {

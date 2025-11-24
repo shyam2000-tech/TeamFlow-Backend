@@ -131,11 +131,27 @@ export const TaskDB = {
   },
 
   // UPDATE TASK STATUS
-  async updateTaskStatus(taskId: number, status: string): Promise<boolean> {
-    const result = await postgresDB.query(
-      `UPDATE tasks SET status=$1 WHERE id=$2`,
-      [status, taskId]
-    );
+  async updateTask(taskId: number, data: any): Promise<boolean> {
+    const fields = [];
+    const values = [];
+
+    let i = 1;
+
+    for (const key in data) {
+      fields.push(`${key} = $${i}`);
+      values.push(data[key]);
+      i++;
+    }
+
+    values.push(taskId); // Last param for WHERE clause
+
+    const query = `
+    UPDATE tasks
+    SET ${fields.join(", ")}
+    WHERE id = $${i}
+  `;
+
+    const result = await postgresDB.query(query, values);
     return (result.rowCount ?? 0) > 0;
   },
 

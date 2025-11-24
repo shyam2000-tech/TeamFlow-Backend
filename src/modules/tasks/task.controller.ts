@@ -108,20 +108,58 @@ export const TaskController = {
   ),
 
   // UPDATE STATUS
-  updateTaskStatus: catchAsync(
+  updateTask: catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
       const taskId = Number(req.params.taskId);
-      const { status } = req.body;
+      const userId = req.user?.id;
+      const role = req.user?.role;
 
-      if (!status) return next(new AppError("Status required", 400));
+      if (!taskId) return next(new AppError("Task ID required", 400));
 
-      const updated = await TaskService.updateTaskStatus(taskId, status);
+      const allowedFields = ["status"]
 
-      if (!updated) return next(new AppError("Task not found", 404));
+      if (role === "ADMIN") {
+        allowedFields.push(
+          "title",
+          "description",
+          "priority",
+          "assignee_id",
+          "position"
+        );
+      }
+
+      const updateData: any = {};
+
+      for (const key of allowedFields) {
+        if (req.body[key] !== undefined) {
+          updateData[key] = req.body[key];
+        }
+      }
+
+      if (Object.keys(updateData).length === 0) {
+        return next(
+          new AppError(
+            role === "ADMIN"
+              ? "No valid fields provided"
+              : "Members can update only task status",
+            400
+          )
+        );
+      }
+
+      const updated = await TaskService.updateTask(
+        taskId,
+        userId!,
+        role!,
+        updateData
+      );
+
+      if (!updated)
+        return next(new AppError("Task not found or not allowed", 404));
 
       res.status(200).json({
         success: true,
-        message: "Status updated",
+        message: "Task updated successfully",
       });
     }
   ),
