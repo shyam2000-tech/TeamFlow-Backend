@@ -12,6 +12,8 @@ taskRoutes.get("/projects/:projectId/tasks", verifyToken, TaskController.getTask
 
 taskRoutes.get("/details/:taskId", verifyToken, TaskController.getTaskDetails);
 
+taskRoutes.delete("/task/:taskId", verifyToken,requireAdmin, TaskController.deleteTask);
+
 taskRoutes.patch("/task/:taskId",verifyToken, TaskController.updateTask);
 
 taskRoutes.patch("/position/:taskId", TaskController.updateTaskPosition);

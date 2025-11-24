@@ -163,4 +163,14 @@ export const TaskDB = {
     );
     return (result.rowCount ?? 0) > 0;
   },
+
+  // DELELTE TASK
+  async deleteTask(taskId: number): Promise<boolean> {
+    const result = await postgresDB.query(`DELETE FROM tasks WHERE id=$1`, [
+      taskId,
+    ]);
+
+    return (result.rowCount ?? 0) > 0;
+
+  },
 };

@@ -116,7 +116,7 @@ export const TaskController = {
 
       if (!taskId) return next(new AppError("Task ID required", 400));
 
-      const allowedFields = ["status"]
+      const allowedFields = ["status"];
 
       if (role === "ADMIN") {
         allowedFields.push(
@@ -181,6 +181,26 @@ export const TaskController = {
       res.status(200).json({
         success: true,
         message: "Position updated",
+      });
+    }
+  ),
+
+  // DELETE TASK
+  deleteTask: catchAsync(
+    async (req: Request, res: Response, next: NextFunction) => {
+      const taskId = Number(req.params.taskId);
+
+      if (!taskId) return next(new AppError("Task ID required", 400));
+
+      const deleted = await TaskService.deleteTask(taskId);
+
+      if (!deleted) {
+        return next(new AppError("Task not found", 404));
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Task deleted successfully",
       });
     }
   ),

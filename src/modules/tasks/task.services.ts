@@ -52,4 +52,8 @@ export const TaskService = {
   async updateTaskPosition(taskId: number, position: number): Promise<boolean> {
     return TaskDB.updateTaskPosition(taskId, position);
   },
+
+  async deleteTask(taskId: number): Promise<boolean> {
+    return TaskDB.deleteTask(taskId);
+  },
 };
