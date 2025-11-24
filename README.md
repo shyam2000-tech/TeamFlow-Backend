@@ -6,12 +6,12 @@ It is built using:
 📦 Tech Stack
 Backend
 
-Node.js
-Express.js
-TypeScript
-PostgreSQL
-JWT Authentication
-Modular MVC Architecture
+1. Node.js
+2. Express.js
+3. TypeScript
+4. PostgreSQL
+5. JWT Authentication
+6. Modular MVC Architecture
 
 🧩Code Implementations
 
