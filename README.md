@@ -32,17 +32,17 @@ Backend
 
 🧩 Features Implemented
 
-✔ JWT Login
-✔ Role-Based Access (Admin/User)
-✔ Create Task
-✔ Get Tasks by Project
-✔ Search & Filter Tasks
-✔ Update Task Status
-✔ Update Task Position
-✔ Get Single Task Details
-✔ Modular MVC Structure
-✔ PostgreSQL Integration
-✔ Typescript
+1. JWT Login
+2. Role-Based Access (Admin/User)
+3. Create Task
+4. Get Tasks by Project
+5. Search & Filter Tasks
+6. Update Task Status
+7. Update Task Position
+8. Get Single Task Details
+9. Modular MVC Structure
+10. PostgreSQL Integration
+11. Typescript
 
 📊Database Setup
 Create a PostgreSQL database: CREATE DATABASE TeamFlow
